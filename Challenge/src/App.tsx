@@ -8,9 +8,12 @@ import {
   Image,
   Text,
   Button,
+  IconButton,
+  useColorMode,
   Container,
 } from "@chakra-ui/react";
 import {useEffect, useState} from "react";
+import {HiSun, HiMoon} from "react-icons/hi";
 
 import api from "./api";
 import {Product} from "./types";
@@ -26,6 +29,7 @@ function App() {
 
   const [{cart, quantity, total, message}, {addItem, incrementItem, decrementItem, removeAll}] =
     useCart();
+  const {colorMode, toggleColorMode} = useColorMode();
 
   return (
     <Container boxShadow={"xl"} m={"auto"} maxW="container.xl" minH={"100vh"}>
@@ -37,6 +41,15 @@ function App() {
           padding={"16px"}
         >
           <Heading>Estampitiency</Heading>
+          <IconButton
+            isRound
+            aria-label="Theme color"
+            borderWidth={"1px"}
+            icon={colorMode === "dark" ? <HiSun color="yellow" /> : <HiMoon color="dark" />}
+            m={1}
+            ml={8}
+            onClick={toggleColorMode}
+          />
         </Stack>
         <Grid gridGap={8} p={"16px"} templateColumns={"repeat(auto-fill, minmax(320px, 1fr))"}>
           {products.map((product) => (
@@ -65,8 +78,8 @@ function App() {
                   </Button>
                   <Text
                     alignItems={"center"}
-                    bg={"blue.500"}
-                    color={"black"}
+                    bg={colorMode === "dark" ? "blue.200" : "blue.500"}
+                    color={colorMode === "dark" ? "black" : "white"}
                     display={"flex"}
                     flex={1}
                     h={"100%"}
@@ -90,13 +103,13 @@ function App() {
         <Box bottom={0} margin={"auto"} paddingBottom={"16px"} position={"sticky"}>
           {Boolean(quantity) && (
             <Flex>
-              <Link isExternal href={message}>
-                <Button colorScheme={"blue"} maxW={"320px"} mx={"auto"} p={3} roundedRight={0}>
+              <Link isExternal href={message} style={{textDecoration: "none"}}>
+                <Button colorScheme={"whatsapp"} maxW={"320px"} mx={"auto"} p={3} roundedRight={0}>
                   {quantity} productos (total: {currency(total)})
                 </Button>
               </Link>
               <Button
-                colorScheme={"blue"}
+                colorScheme={"whatsapp"}
                 maxW={"320px"}
                 mx={"auto"}
                 p={3}
