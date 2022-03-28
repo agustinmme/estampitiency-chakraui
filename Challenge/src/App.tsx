@@ -8,12 +8,9 @@ import {
   Image,
   Text,
   Button,
-  IconButton,
-  useColorMode,
   Container,
 } from "@chakra-ui/react";
 import {useEffect, useState} from "react";
-import {HiSun, HiMoon} from "react-icons/hi";
 
 import api from "./api";
 import {Product} from "./types";
@@ -26,8 +23,7 @@ function App() {
   useEffect(() => {
     api.list().then(setProducts);
   }, []);
-  const {colorMode, toggleColorMode} = useColorMode();
-  const isDark = colorMode === "dark";
+
   const [{cart, quantity, total, message}, {addItem, incrementItem, decrementItem, removeAll}] =
     useCart();
 
@@ -41,15 +37,6 @@ function App() {
           padding={"16px"}
         >
           <Heading>Estampitiency</Heading>
-          <IconButton
-            isRound
-            aria-label="Theme color"
-            borderWidth={"1px"}
-            icon={isDark ? <HiSun color="yellow" /> : <HiMoon color="dark" />}
-            m={1}
-            ml={8}
-            onClick={toggleColorMode}
-          />
         </Stack>
         <Grid gridGap={8} p={"16px"} templateColumns={"repeat(auto-fill, minmax(320px, 1fr))"}>
           {products.map((product) => (
@@ -78,8 +65,8 @@ function App() {
                   </Button>
                   <Text
                     alignItems={"center"}
-                    bg={isDark ? "blue.200" : "blue.500"}
-                    color={!isDark ? "white" : "black"}
+                    bg={"blue.500"}
+                    color={"black"}
                     display={"flex"}
                     flex={1}
                     h={"100%"}
