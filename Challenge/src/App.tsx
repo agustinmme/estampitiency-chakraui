@@ -71,7 +71,7 @@ function App() {
                   <Button
                     colorScheme={"blue"}
                     fontSize={"lg"}
-                    roundedLeft={0}
+                    roundedRight={0}
                     onClick={() => decrementItem(product.id)}
                   >
                     -
@@ -87,11 +87,10 @@ function App() {
                   >
                     {cart.get(product.id)?.quantity}
                   </Text>
-
                   <Button
                     colorScheme={"blue"}
                     fontSize={"lg"}
-                    roundedRight={0}
+                    roundedLeft={0}
                     onClick={() => incrementItem(product.id)}
                   >
                     +
