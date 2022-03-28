@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Flex,
@@ -105,12 +104,12 @@ function App() {
           {Boolean(quantity) && (
             <Flex>
               <Link isExternal href={message}>
-                <Button colorScheme={"whatsapp"} maxW={"320px"} mx={"auto"} p={3} roundedRight={0}>
+                <Button colorScheme={"blue"} maxW={"320px"} mx={"auto"} p={3} roundedRight={0}>
                   {quantity} productos (total: {currency(total)})
                 </Button>
               </Link>
               <Button
-                colorScheme={"whatsapp"}
+                colorScheme={"blue"}
                 maxW={"320px"}
                 mx={"auto"}
                 p={3}
