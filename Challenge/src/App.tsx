@@ -71,10 +71,10 @@ function App() {
                   <Button
                     colorScheme={"blue"}
                     fontSize={"lg"}
-                    roundedRight={0}
-                    onClick={() => incrementItem(product.id)}
+                    roundedLeft={0}
+                    onClick={() => decrementItem(product.id)}
                   >
-                    +
+                    -
                   </Button>
                   <Text
                     alignItems={"center"}
@@ -87,13 +87,14 @@ function App() {
                   >
                     {cart.get(product.id)?.quantity}
                   </Text>
+
                   <Button
                     colorScheme={"blue"}
                     fontSize={"lg"}
-                    roundedLeft={0}
-                    onClick={() => decrementItem(product.id)}
+                    roundedRight={0}
+                    onClick={() => incrementItem(product.id)}
                   >
-                    -
+                    +
                   </Button>
                 </Flex>
               )}
